@@ -1,0 +1,24 @@
+[
+  {
+    "id": "cart001",
+    "products": [
+      {
+        "product": "espada_excalibur",
+        "quantity": 1
+      }
+    ]
+  },
+  {
+    "id": "cart002",
+    "products": [
+      {
+        "product": "armadura_caballero",
+        "quantity": 1
+      },
+      {
+        "product": "tunica_maga",
+        "quantity": 2
+      }
+    ]
+  }
+]

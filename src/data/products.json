@@ -1,0 +1,54 @@
+[
+  {
+    "id": "espada_katana",
+    "title": "Katana Samurai",
+    "description": "Katana japonesa con filo de alta precisión, mango de cuero.",
+    "code": "MD002",
+    "price": 95000,
+    "status": true,
+    "stock": 10,
+    "category": "Espadas",
+    "thumbnails": [
+      "images/katana.jpg"
+    ]
+  },
+  {
+    "id": "armadura_caballero",
+    "title": "Armadura de Caballero",
+    "description": "Armadura completa medieval de acero, incluye casco.",
+    "code": "MD003",
+    "price": 250000,
+    "status": true,
+    "stock": 3,
+    "category": "Ropa",
+    "thumbnails": [
+      "images/armadura.jpg"
+    ]
+  },
+  {
+    "id": "tunica_maga",
+    "title": "Escudo de Hierro",
+    "description": "Escudo templado con emblema grabado.",
+    "code": "MD007",
+    "price": 72000,
+    "status": true,
+    "stock": 5,
+    "category": "Armadurax333",
+    "thumbnails": [
+      "images/escudo.jpg"
+    ]
+  },
+  {
+    "id": "1bd4f14e-2884-47aa-b2ef-cb19dfe61e42",
+    "title": "Escudo de Hierro",
+    "description": "Escudo templado con emblema grabado.",
+    "code": "MD007",
+    "price": 72000,
+    "status": true,
+    "stock": 5,
+    "category": "Armadura",
+    "thumbnails": [
+      "images/escudo.jpg"
+    ]
+  }
+]
