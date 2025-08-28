@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
@@ -12,8 +13,18 @@
   "description": "",
   "dependencies": {
     "express": "^5.1.0",
+    "express-handlebars": "^8.0.3",
     "multer": "^2.0.2",
     "nodemailer": "^7.0.5",
+    "socket.io": "^4.8.1",
     "uuid": "^11.1.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/angeL23235/EntregaCoder.git"
+  },
+  "bugs": {
+    "url": "https://github.com/angeL23235/EntregaCoder/issues"
+  },
+  "homepage": "https://github.com/angeL23235/EntregaCoder#readme"
 }

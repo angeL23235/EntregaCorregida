@@ -1,18 +1,5 @@
 [
   {
-    "id": "espada_katana",
-    "title": "Katana Samurai",
-    "description": "Katana japonesa con filo de alta precisión, mango de cuero.",
-    "code": "MD002",
-    "price": 95000,
-    "status": true,
-    "stock": 10,
-    "category": "Espadas",
-    "thumbnails": [
-      "images/katana.jpg"
-    ]
-  },
-  {
     "id": "armadura_caballero",
     "title": "Armadura de Caballero",
     "description": "Armadura completa medieval de acero, incluye casco.",
@@ -49,6 +36,19 @@
     "category": "Armadura",
     "thumbnails": [
       "images/escudo.jpg"
+    ]
+  },
+  {
+    "id": "44d07186-10ce-423e-8d8b-5d91ab162d60",
+    "title": "katana",
+    "description": "hola",
+    "code": "1010",
+    "price": 300,
+    "status": true,
+    "stock": 23,
+    "category": "mundo",
+    "thumbnails": [
+      "hiihihih"
     ]
   }
 ]

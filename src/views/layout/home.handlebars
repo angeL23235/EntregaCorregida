@@ -1,0 +1,9 @@
+{{! no comments }}
+<h1>Productos</h1>
+<ul id="list">
+  {{#each products}}
+    <li data-id="{{this.id}}">{{this.title}} — ${{this.price}} — {{this.category}}</li>
+  {{/each}}
+</ul>
+<a href="/realtimeproducts">Ir a tiempo real</a>
+    
