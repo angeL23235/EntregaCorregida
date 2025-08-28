@@ -14,9 +14,9 @@ const cartsRouter = require('./src/routes/cartsRouter')
 app.engine('handlebars', exphbs.engine({
   layoutsDir: path.join(__dirname, 'src', 'views', 'layout'),
   defaultLayout: 'main'
-}))
+})) 
 app.set('view engine', 'handlebars')
-app.set('views', path.join(__dirname, 'src', 'views', 'layout'))
+app.set('views', path.join(__dirname, 'src', 'views'))
 
 
 app.use(express.json())
@@ -74,7 +74,7 @@ io.on('connection', async socket => {
 })
 
 
-const PORT = process.env.PORT || 8080
+const PORT =  8080
 httpServer.listen(PORT, () => {
   console.log(`Server ready → http://localhost:${PORT}`)
 })

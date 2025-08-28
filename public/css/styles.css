@@ -1,0 +1,114 @@
+/* Reset básico */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Fondo y fuente */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background: #1e272e; /* gris oscuro elegante */
+  color: #ecf0f1; /* texto claro */
+  line-height: 1.6;
+}
+
+/* Titulos */
+h1 {
+  color: #f1c40f; /* amarillo dorado */
+  font-size: 2rem;
+  margin-bottom: 15px;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+/* Lista de productos */
+#list {
+  list-style: none;
+  padding: 0;
+  margin: 20px auto;
+  max-width: 1200px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+#list li {
+  background: #2f3640; /* gris carbón */
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+#list li:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+}
+
+#list li strong {
+  display: block;
+  font-size: 1.1rem;
+  color: #ffffff;
+  margin-bottom: 6px;
+}
+
+/* Links */
+a {
+  display: inline-block;
+  margin: 25px auto 0;
+  padding: 12px 20px;
+  background: #0984e3; /* azul vivo */
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.2s ease;
+}
+
+a:hover {
+  background: #0652dd;
+}
+
+/* Formularios */
+form {
+  margin: 30px auto;
+  background: #2f3640;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  max-width: 600px;
+}
+
+form input, form button {
+  margin: 8px 0;
+  padding: 12px;
+  width: 100%;
+  border: 1px solid #444;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  background: #1e272e;
+  color: #ecf0f1;
+}
+
+form input:focus {
+  border-color: #0984e3;
+  outline: none;
+  box-shadow: 0 0 6px rgba(9,132,227,0.5);
+}
+
+form button {
+  background: #27ae60; /* verde */
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+
+form button:hover {
+  background: #1e8449;
+}
