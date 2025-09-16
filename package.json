@@ -12,8 +12,12 @@
   "type": "commonjs",
   "description": "",
   "dependencies": {
+    "dotenv": "^17.2.2",
     "express": "^5.1.0",
     "express-handlebars": "^8.0.3",
+    "mongodb": "^6.19.0",
+    "mongoose": "^8.18.1",
+    "mongoose-paginate-v2": "^1.9.1",
     "multer": "^2.0.2",
     "nodemailer": "^7.0.5",
     "socket.io": "^4.8.1",

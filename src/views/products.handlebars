@@ -1,0 +1,59 @@
+<h1>Productos (paginado)</h1>
+
+<form method="get" action="/products" style="margin-bottom:12px; display:flex; gap:8px; flex-wrap:wrap;">
+  <input type="hidden" name="limit" value="{{limit}}">
+  <label>Filtro (query):
+    <input type="text" name="query" value="{{query}}" placeholder="category o 'available'">
+  </label>
+  <label>Orden:
+    <select name="sort">
+      <option value="" {{#unless sort}}selected{{/unless}}>-</option>
+      <option value="asc" {{#if (eq sort "asc")}}selected{{/if}}>Precio ↑</option>
+      <option value="desc" {{#if (eq sort "desc")}}selected{{/if}}>Precio ↓</option>
+    </select>
+  </label>
+  <label>Carrito (cid):
+    <input type="text" name="cid" value="{{cartId}}" placeholder="opcional para 'Agregar'">
+  </label>
+  <button type="submit">Aplicar</button>
+</form>
+
+<ul id="list">
+  {{#each products}}
+    <li data-id="{{this._id}}">
+      <a href="/products/{{this._id}}{{#if ../cartId}}?cid={{../cartId}}{{/if}}">
+        {{this.title}}
+      </a>
+      — ${{this.price}} — {{this.category}}
+      {{#if ../cartId}}
+        <button class="add-to-cart" data-pid="{{this._id}}">Agregar al carrito</button>
+      {{/if}}
+    </li>
+  {{/each}}
+</ul>
+
+<nav style="margin-top:12px; display:flex; gap:12px; align-items:center;">
+  {{#if hasPrevPage}}<a href="{{prevLink}}">← Anterior</a>{{/if}}
+  <span>Página {{page}}</span>
+  {{#if hasNextPage}}<a href="{{nextLink}}">Siguiente →</a>{{/if}}
+</nav>
+
+<p style="margin-top:12px;">
+  <a href="/realtimeproducts">Ir a tiempo real</a> ·
+  <a href="/">Home simple</a>
+</p>
+
+<script>
+  (function(){
+    const cid = "{{cartId}}";
+    document.querySelectorAll(".add-to-cart").forEach(btn => {
+      btn.addEventListener("click", async () => {
+        if(!cid){ alert("Agrega ?cid=<carrito> en la URL para usar el botón."); return; }
+        const pid = btn.dataset.pid;
+        const res = await fetch(`/api/carts/${cid}/product/${pid}`, { method: "POST" });
+        if(res.ok) alert("Agregado ✅");
+        else alert("Error al agregar");
+      });
+    });
+  })();
+</script>

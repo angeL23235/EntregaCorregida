@@ -1,4 +1,5 @@
 <h1>Productos en tiempo real</h1>
+
 <section>
   <form id="createForm">
     <input name="title" placeholder="title" required/>
@@ -11,16 +12,19 @@
     <button type="submit">Crear</button>
   </form>
 </section>
+
 <section>
   <form id="deleteForm">
-    <input name="id" placeholder="id" required/>
+    <input name="id" placeholder="id de Mongo (_id)" required/>
     <button type="submit">Eliminar</button>
   </form>
 </section>
+
 <ul id="list">
   {{#each products}}
-    <li data-id="{{this.id}}">{{this.title}} — ${{this.price}} — {{this.category}}</li>
+    <li data-id="{{this._id}}">{{this.title}} — ${{this.price}} — {{this.category}}</li>
   {{/each}}
 </ul>
+
 <script src="/socket.io/socket.io.js"></script>
 <script src="/realtime.js"></script>

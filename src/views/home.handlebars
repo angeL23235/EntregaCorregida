@@ -1,8 +1,12 @@
 <h1>Productos</h1>
+
+<div class="actions">
+  <a class="btn" href="/products?limit=4&page=1">Ver catálogo paginado</a>
+  <a class="btn secondary" href="/realtimeproducts">Ir a tiempo real</a>
+</div>
+
 <ul id="list">
   {{#each products}}
-    <li data-id="{{this.id}}">{{this.title}} — ${{this.price}} — {{this.category}}</li>
+    <li data-id="{{this._id}}">{{this.title}} — ${{this.price}} — {{this.category}}</li>
   {{/each}}
 </ul>
-<a href="/realtimeproducts">Ir a tiempo real</a>
-    

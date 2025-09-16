@@ -1,0 +1,19 @@
+<h1>{{product.title}}</h1>
+<p>{{product.description}}</p>
+<p><b>Precio:</b> ${{product.price}}</p>
+<p><b>Categoría:</b> {{product.category}}</p>
+<p><b>Stock:</b> {{product.stock}}</p>
+
+{{#if cartId}}
+  <button id="add">Agregar al carrito</button>
+  <script>
+    document.getElementById("add").addEventListener("click", async () => {
+      const res = await fetch(`/api/carts/{{cartId}}/product/{{product._id}}`, { method: "POST" });
+      if(res.ok) alert("Agregado ✅"); else alert("Error al agregar");
+    });
+  </script>
+{{/if}}
+
+<p style="margin-top:12px;">
+  <a href="/products{{#if cartId}}?cid={{cartId}}{{/if}}">Volver</a>
+</p>
