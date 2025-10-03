@@ -1,31 +1,17 @@
 const express = require("express");
-const Product = require("../models/product"); // <- ruta corregida
+const { productsDAO } = require("../dao");
 const router = express.Router();
-
 
 router.get("/", async (req, res) => {
   try {
     let { limit = 10, page = 1, sort, query } = req.query;
+    const result = await productsDAO.paginate({
+      limit: parseInt(limit) || 10,
+      page: parseInt(page) || 1,
+      sort,
+      query
+    });
 
-    limit = parseInt(limit) || 10;
-    page = parseInt(page) || 1;
-
-    const filter = {};
-    if (query) {
-      if (query === "available") filter.status = true;
-      else filter.category = query;
-    }
-
-    // Ordenamiento por precio
-    const sortOption = {};
-    if (sort === "asc") sortOption.price = 1;
-    if (sort === "desc") sortOption.price = -1;
-
-    const options = { limit, page, sort: sortOption, lean: true };
-
-    const result = await Product.paginate(filter, options);
-
-    
     const makeLink = (p) => {
       const params = new URLSearchParams({ limit, page: p });
       if (sort) params.set("sort", sort);
@@ -50,59 +36,42 @@ router.get("/", async (req, res) => {
   }
 });
 
-// GET un producto por ID
 router.get("/:pid", async (req, res) => {
   try {
-    const p = await Product.findById(req.params.pid).lean();
+    const p = await productsDAO.getById(req.params.pid);
     if (!p) return res.status(404).json({ error: "not_found" });
     res.json(p);
   } catch (err) {
-    res.status(500).json({ error: "error" });
+    res.status(500).json({ error: err.message });
   }
 });
 
-// POST crear producto
 router.post("/", async (req, res) => {
   try {
-    const b = req.body || {};
-    const created = await Product.create({
-      title: b.title,
-      description: b.description,
-      code: b.code,
-      price: b.price,
-      status: typeof b.status === "boolean" ? b.status : true,
-      stock: b.stock,
-      category: b.category,
-      thumbnails: Array.isArray(b.thumbnails) ? b.thumbnails : []
-    });
+    const created = await productsDAO.create(req.body || {});
     res.status(201).json(created);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 });
 
-// PUT actualizar producto
 router.put("/:pid", async (req, res) => {
   try {
-    const patch = req.body || {};
-    const up = await Product.findByIdAndUpdate(req.params.pid, patch, {
-      new: true
-    }).lean();
+    const up = await productsDAO.update(req.params.pid, req.body || {});
     if (!up) return res.status(404).json({ error: "not_found" });
     res.json(up);
-  } catch {
-    res.status(500).json({ error: "error" });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
   }
 });
 
-// DELETE eliminar producto
 router.delete("/:pid", async (req, res) => {
   try {
-    const ok = await Product.findByIdAndDelete(req.params.pid);
+    const ok = await productsDAO.delete(req.params.pid);
     if (!ok) return res.status(404).json({ error: "not_found" });
     res.sendStatus(204);
-  } catch {
-    res.status(500).json({ error: "error" });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
   }
 });
 
